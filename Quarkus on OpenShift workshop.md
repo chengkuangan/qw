@@ -3,7 +3,7 @@
 
 ## Issues
 
-**Debugger**
+<!--**Debugger**
 
 Debugger not installed and prompted the following screen:
 
@@ -23,7 +23,7 @@ Once it is installed, you will be asked to Reload/Restart the IDE. Click `Yes` t
 
 It may take a while to reload, please wait patiently.
 
-After IDE restarted, start the `Live Coding` again.
+After IDE restarted, start the `Live Coding` again.-->
 
 <!--**Error Starting Live Coding**
 
@@ -63,26 +63,48 @@ JDWP exit error AGENT_ERROR_TRANSPORT_INIT(197): No transports initialized [open
 [INFO] ------------------------------------------------------------------------
 ```
 -->
-## Module 2 > Configure endpoint
+## Module 2 > 7. Tracing Quarkus Apps > Create interface
 
-- Use `https://swapi.info` instead of `https://swapi.dev`
-
-- use `curl -s https://swapi.info/api/people/1 |jq`
-	instead of `curl -s https://swapi.dev/api/people/1/ | jq`
 - Use `/people/{id}` instead of `/people/{id}/` for `@Path`
 
-	```java
-	@RegisterRestClient 
-	@Path("/api") 
-	public interface StarWarsService {
+```
+package org.acme.people.service;
+
+import org.acme.people.model.StarWarsPerson;
+import org.eclipse.microprofile.rest.client.annotation.ClientHeaderParam;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+
+@RegisterRestClient 
+@Path("/api") 
+public interface StarWarsService {
+
+    @GET
+    @Path("/people/{id}") 
+    @Produces("application/json") 
+    @ClientHeaderParam(name="User-Agent", value="QuarkusLab") 
+    StarWarsPerson getPerson(@PathParam("id") int id); 
+}
+```
+
+## Module 2 > 7. Tracing Quarkus Apps > Configure endpoint
+
+In order to determine the base URL to which REST calls will be made, the REST Client uses configuration from `application.properties. To configure it, add this to your `application.properties` (in `src/main/resources`):
+
+```java
+org.acme.people.service.StarWarsService/mp-rest/url=https://swapi.info
+```
+
+> Note: Use `https://swapi.info` instead of `https://swapi.dev`
+
 	
-	    @GET
-	    @Path("/people/{id}") 
-	    @Produces("application/json") 
-	    @ClientHeaderParam(name="User-Agent", value="QuarkusLab") 
-	    StarWarsPerson getPerson(@PathParam("id") int id); 
-	}
-	```
+- use `curl -s https://swapi.info/api/people/1 |jq`
+	instead of `curl -s https://swapi.dev/api/people/1/ | jq`
+
 
 ## Module 3 > 5. Spring Data JPA to Quarkus Hibernate ORM with Panache > Refactor Vets Persistence Layer
 
