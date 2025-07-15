@@ -1,9 +1,5 @@
 # Quarkus on OpenShift workshop
 
-## Login Details
-
-Password: `openshift`
-
 
 ## Issues
 
