@@ -65,6 +65,8 @@ JDWP exit error AGENT_ERROR_TRANSPORT_INIT(197): No transports initialized [open
 -->
 ## Module 2 > Configure endpoint
 
+- Use `https://swapi.info` instead of `https://swapi.dev`
+
 - use `curl -s https://swapi.info/api/people/1 |jq`
 	instead of `curl -s https://swapi.dev/api/people/1/ | jq`
 - Use `/people/{id}` instead of `/people/{id}/` for `@Path`
