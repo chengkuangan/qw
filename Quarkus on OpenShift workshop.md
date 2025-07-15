@@ -65,7 +65,7 @@ JDWP exit error AGENT_ERROR_TRANSPORT_INIT(197): No transports initialized [open
 -->
 ## Module 2 > 7. Tracing Quarkus Apps > Create interface
 
-- Use `/people/{id}` instead of `/people/{id}/` for `@Path`
+- Use `/people/{id}` instead of `/people/{id}/` for `@Path` for `org.acme.people.service/StarWarsService.java`
 
 ```
 package org.acme.people.service;
@@ -108,7 +108,7 @@ org.acme.people.service.StarWarsService/mp-rest/url=https://swapi.info
 
 ## Module 3 > 5. Spring Data JPA to Quarkus Hibernate ORM with Panache > Refactor Vets Persistence Layer
 
-- Keep the following `listAll() comment out for `src/main/java/org/acme/model/Vet.java`
+- Keep the following `listAll()` commentted out for `src/main/java/org/acme/model/Vet.java`
 
 ```
 // public static List<Vet> listAll(){
