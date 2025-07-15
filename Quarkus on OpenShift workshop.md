@@ -1,7 +1,7 @@
 # Quarkus on OpenShift workshop
 
 
-## Issues
+## Changes
 
 <!--**Debugger**
 
